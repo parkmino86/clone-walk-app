@@ -6,7 +6,7 @@ type HeaderProps = {
   points: number;
 };
 
-const Header: React.FC<HeaderProps> = ({ points }) => {
+export function Header({ points }: HeaderProps) {
   return (
     <View style={styles.header}>
       <View style={styles.pointContainer}>
@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ points }) => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   header: {
@@ -45,5 +45,3 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
 });
-
-export default Header;

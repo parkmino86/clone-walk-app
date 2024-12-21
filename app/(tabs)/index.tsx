@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import Header from './header';
+import { Header } from '@/components/headers/Header';
 
 export default function HomeScreen() {
   const [points, setPoints] = useState(1585);
