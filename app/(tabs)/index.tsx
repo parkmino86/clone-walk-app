@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { StyleSheet, SafeAreaView, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Header } from './components/Header';
-import { StepCounterView } from './components/StepCounterView';
+import { Header } from '@/components/Header';
+import { StepCounterView } from '@/components/StepCounterView';
 
 export default function HomeView() {
   const [points, setPoints] = useState(1585);

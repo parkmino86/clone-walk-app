@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
-export default function BlankScreen() {
+export default function BenefitsView() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.placeholderText}>This is a blank screen</Text>
+        <Text style={styles.placeholderText}>This is a benefits screen</Text>
       </View>
     </SafeAreaView>
   );
