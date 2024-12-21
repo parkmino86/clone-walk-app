@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableWithoutFeedback, Animated } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { HapticTab } from '@/components/HapticTab';
 
 export default function HomeScreen() {
   const [points, setPoints] = useState(1585);
@@ -44,11 +45,11 @@ export default function HomeScreen() {
         </View>
         <View style={styles.subtitleContainer}>
           <Text style={styles.subtitleText}>50걸음 당 1포인트</Text>
-          <TouchableWithoutFeedback onPressIn={handlePressIn} onPressOut={handlePressOut}>
+          <HapticTab onPressIn={handlePressIn} onPressOut={handlePressOut}>
             <Animated.View style={[styles.iconContainer, { transform: [{ scale: scaleAnim }] }]}>
               <IconSymbol name="p.circle.fill" size={120} color="#FFD700" />
             </Animated.View>
-          </TouchableWithoutFeedback>
+          </HapticTab>
           <View style={styles.stepContainer}>
             <Text style={styles.stepNumber}>2,085</Text>
             <Text style={styles.stepText}>걸음</Text>
