@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import { HapticTab } from '@/components/HapticTab';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import Header from './header';
 
 export default function HomeScreen() {
   const [points, setPoints] = useState(1585);
@@ -33,16 +34,7 @@ export default function HomeScreen() {
       style={styles.gradient}
     >
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.header}>
-          <View style={styles.pointContainer}>
-            <IconSymbol name="p.circle.fill" size={28} color="#FFD700" />
-            <Text style={styles.pointText}>{points}p</Text>
-          </View>
-          <View style={styles.headerIcons}>
-            <IconSymbol name="bell.fill" size={24} color="#000" style={styles.iconMargin} />
-            <IconSymbol name="gearshape.fill" size={24} color="#000" />
-          </View>
-        </View>
+        <Header points={points} />
         <View style={styles.subtitleContainer}>
           <Text style={styles.subtitleText}>50걸음 당 1포인트</Text>
           <HapticTab onPressIn={handlePressIn} onPressOut={handlePressOut}>
@@ -66,28 +58,6 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingTop: 16,
-  },
-  pointContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  pointText: {
-    fontSize: 28,
-    color: '#000',
-    marginLeft: 4,
-  },
-  headerIcons: {
-    flexDirection: 'row',
-  },
-  iconMargin: {
-    marginRight: 16,
   },
   subtitleContainer: {
     marginTop: 20,
