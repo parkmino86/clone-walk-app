@@ -11,7 +11,7 @@ export function Header({ points }: HeaderProps) {
     <View style={styles.header}>
       <View style={styles.pointContainer}>
         <IconSymbol name="p.circle.fill" size={28} color="#FFD700" />
-        <Text style={styles.pointText}>{points}p</Text>
+        <Text style={styles.pointText}>{points.toLocaleString()}p</Text>
       </View>
       <View style={styles.headerIcons}>
         <IconSymbol name="bell.fill" size={24} color="#000" style={styles.iconMargin} />
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     color: '#000',
     marginLeft: 4,
+    fontWeight: 'bold',
   },
   headerIcons: {
     flexDirection: 'row',
