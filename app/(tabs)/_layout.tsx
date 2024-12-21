@@ -20,24 +20,45 @@ export default function TabLayout() {
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
           default: {},
         }),
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: '홈',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="benefits"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: '혜택',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="p.circle.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="health"
+        options={{
+          title: '건강',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="chart.bar.doc.horizontal.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="giftshop"
+        options={{
+          title: '선물샵',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="bag" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="news"
+        options={{
+          title: '뉴스',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="newspaper.fill" color={color} />,
         }}
       />
     </Tabs>
