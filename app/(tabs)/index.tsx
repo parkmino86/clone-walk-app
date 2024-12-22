@@ -6,10 +6,11 @@ import { FlyoutIcon } from '@/components/home/FlyoutIcon';
 import { StepCounterView } from '@/components/home/step-counter/StepCounterView';
 import { Colors } from '@/constants/Colors';
 
-const { width, height } = Dimensions.get('window');
-const ICON_SIZE = 60;
-const START_POSITION = { x: (width - ICON_SIZE) / 2, y: (height / 5) };
-const END_POSITION = { x: (width / 3), y: 0 };
+const constants = {
+  SCREEN_WIDTH: Dimensions.get('window').width,
+  SCREEN_HEIGHT: Dimensions.get('window').height,
+  ICON_SIZE: 60,
+}
 
 const initialState = {
   points: 0,
@@ -22,7 +23,7 @@ const actionTypes = {
   REMOVE_FLYOUT_ICON: 'REMOVE_FLYOUT_ICON',
 };
 
-const reducer = (state, action) => {
+const reducer = (state, action) => {  
   switch (action.type) {
     case actionTypes.INCREASE_POINTS:
       return { ...state, points: state.points + 1 };
@@ -31,7 +32,11 @@ const reducer = (state, action) => {
         ...state,
         flyoutIcons: [
           ...state.flyoutIcons,
-          { id: Date.now(), startPosition: START_POSITION, endPosition: END_POSITION },
+          {
+            id: Date.now(),
+            startPosition: { x: (constants.SCREEN_WIDTH - constants.ICON_SIZE) / 2, y: constants.SCREEN_HEIGHT / 5 },
+            endPosition: action.endPosition,
+          },
         ],
       };
     case actionTypes.REMOVE_FLYOUT_ICON:
@@ -47,15 +52,6 @@ const reducer = (state, action) => {
 const HomeView = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handlePointIncrease = () => {
-    dispatch({ type: actionTypes.INCREASE_POINTS });
-    dispatch({ type: actionTypes.ADD_FLYOUT_ICON });
-  };
-
-  const handleAnimationComplete = (id) => {
-    dispatch({ type: actionTypes.REMOVE_FLYOUT_ICON, id });
-  };
-
   return (
     <LinearGradient
       colors={[Colors.common.appColor, Colors.light.background]}
@@ -65,16 +61,32 @@ const HomeView = () => {
     >
       <SafeAreaView style={styles.safeArea}>
         <Header points={state.points} />
-        <StepCounterView onPointIncrease={handlePointIncrease} />
+        <StepCounterView
+          onPointIncrease={() => {
+            dispatch({ type: actionTypes.INCREASE_POINTS });
+            dispatch({
+              type: actionTypes.ADD_FLYOUT_ICON,
+              endPosition: {
+                x: Math.random() * (constants.SCREEN_WIDTH / 3),
+                y: 0,
+              },
+            });
+          }}
+        />
         {state.flyoutIcons.map((icon) => (
           <FlyoutIcon
             key={icon.id}
             name="p.circle.fill"
             startPosition={icon.startPosition}
             endPosition={icon.endPosition}
-            size={ICON_SIZE}
+            size={constants.ICON_SIZE}
             color={Colors.common.highlightColor}
-            onAnimationComplete={() => handleAnimationComplete(icon.id)}
+            onAnimationComplete={() =>
+              dispatch({
+                type: actionTypes.REMOVE_FLYOUT_ICON,
+                id: icon.id,
+              })
+            }
           />
         ))}
       </SafeAreaView>
