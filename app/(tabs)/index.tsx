@@ -1,27 +1,14 @@
-import React, { useState, useRef } from 'react';
-import { StyleSheet, SafeAreaView, Animated } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Header } from '@/components/home/Header';
+import { Header } from '@/components/home/HeaderView';
 import { StepCounterView } from '@/components/home/step-counter/StepCounterView';
+import { Colors } from '@/constants/Colors';
 
 export default function HomeView() {
   const [points, setPoints] = useState(0);
-  const scaleAnim = useRef(new Animated.Value(1)).current;
 
-  const handlePressIn = () => {
-    Animated.timing(scaleAnim, {
-      toValue: 0.9,
-      duration: 100,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const handlePressOut = () => {
-    Animated.timing(scaleAnim, {
-      toValue: 1,
-      duration: 100,
-      useNativeDriver: true,
-    }).start();
+  const handlePointIncrease = () => {
     setPoints(points + 1);
   };
 
@@ -34,11 +21,7 @@ export default function HomeView() {
     >
       <SafeAreaView style={styles.safeArea}>
         <Header points={points} />
-        <StepCounterView
-          scaleAnim={scaleAnim}
-          onPressIn={handlePressIn}
-          onPressOut={handlePressOut}
-        />
+        <StepCounterView onPointIncrease={handlePointIncrease} />
       </SafeAreaView>
     </LinearGradient>
   );

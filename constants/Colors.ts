@@ -23,4 +23,12 @@ export const Colors = {
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
   },
+  common: {
+    appColor: '#FD8700',
+    appShadowColor: 'rgba(253, 135, 0, 0.6)',
+    borderColor: '#FF8C42',
+    highlightColor: '#FFD700',
+    tagBackgroundColor: '#FD8700',
+    descriptionTextColor: '#4D4D4D',
+  }
 };

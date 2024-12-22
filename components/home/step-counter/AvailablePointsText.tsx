@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Colors } from '@/constants/Colors';
 
 type AvailablePointsTextProps = {
   availablePoints: number;
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FD8700',
+    backgroundColor: Colors.common.tagBackgroundColor,
     borderRadius: 16,
     height: 32,
     paddingHorizontal: 8,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Colors } from '@/constants/Colors'
 
 type HeaderProps = {
   points: number;
@@ -10,7 +11,7 @@ export function Header({ points }: HeaderProps) {
   return (
     <View style={styles.header}>
       <View style={styles.pointContainer}>
-        <IconSymbol name="p.circle.fill" size={28} color="#FFD700" />
+        <IconSymbol name="p.circle.fill" size={28} color={Colors.common.highlightColor} />
         <Text style={styles.pointText}>{points.toLocaleString()}p</Text>
       </View>
       <View style={styles.headerIcons}>

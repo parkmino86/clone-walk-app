@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Animated } from 'react-native';
 import { AvailablePointsText } from './AvailablePointsText';
 import { PointButton } from './PointButton';
 import { StepCountText } from './StepCountText';
+import { Colors } from '@/constants/Colors';
 
-export function StepCounterView({ scaleAnim, onPressIn, onPressOut }) {
+type StepCounterViewProps = {
+  onPointIncrease: () => void;
+};
+
+export function StepCounterView({ onPointIncrease }: StepCounterViewProps) {
   const [steps, setSteps] = useState(0);
   const [collectedPoints, setCollectedPoints] = useState(0);
+  const scaleAnim = useRef(new Animated.Value(1)).current;
 
   const totalPoints = Math.floor(steps / 50);
   const availablePoints = totalPoints - collectedPoints;
@@ -16,48 +22,63 @@ export function StepCounterView({ scaleAnim, onPressIn, onPressOut }) {
     return () => clearInterval(interval);
   }, []);
 
+  const handlePressIn = () => {
+    Animated.timing(scaleAnim, {
+      toValue: 0.9,
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+  };
+
   const handlePressOut = () => {
+    Animated.timing(scaleAnim, {
+      toValue: 1,
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+
     if (availablePoints > 0) {
       setCollectedPoints((prev) => prev + 1);
-      onPressOut();
+      onPointIncrease();
     }
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.pointsContainer}>
-        <AvailablePointsText availablePoints={availablePoints} />
+    <React.Fragment>
+      <Text style={styles.descriptionText}>50걸음 당 1포인트</Text>
+      <View style={styles.stepCounterContainer}>
+        <View style={styles.availablePointsWrapper}>
+          <AvailablePointsText availablePoints={availablePoints} />
+        </View>
+        <PointButton
+          scaleAnim={scaleAnim}
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
+        />
+        <StepCountText steps={steps} />
       </View>
-      <PointButton
-        scaleAnim={scaleAnim}
-        onPressIn={onPressIn}
-        onPressOut={handlePressOut}
-      />
-      <Text style={styles.subtitleText}>50걸음 당 1포인트</Text>
-      <StepCountText steps={steps} />
-    </View>
+    </React.Fragment>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  descriptionText: {
+    fontSize: 16,
+    color: Colors.common.descriptionTextColor,
+    fontWeight: '300',
     marginTop: 20,
+    textAlign: 'center',
+  },
+  stepCounterContainer: {
     alignItems: 'center',
   },
-  pointsContainer: {
+  availablePointsWrapper: {
     position: 'absolute',
     right: '50%',
     transform: [
       { translateX: '-50%' },
       { translateY: '25%' },
     ],
-    zIndex: 2,
-  },
-  subtitleText: {
-    fontSize: 16,
-    color: '#4D4D4D',
-    fontWeight: '300',
-    marginTop: 10,
-    marginBottom: 20,
+    zIndex: 10,
   },
 });
