@@ -10,7 +10,7 @@ type StepCounterViewProps = {
 };
 
 export function StepCounterView({ onPointIncrease }: StepCounterViewProps) {
-  const [steps, setSteps] = useState(0);
+  const [steps, setSteps] = useState(100);
   const [collectedPoints, setCollectedPoints] = useState(0);
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
