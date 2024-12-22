@@ -1,5 +1,5 @@
 # Welcome to your Expo app 👋
-<img src="https://github.com/user-attachments/assets/f6042169-d5c9-4b03-b9e5-f21768e2051d" alt="Welcome Banner" width="375"/>
+<img src="https://github.com/user-attachments/assets/8223ed51-e8e9-478a-a3a2-7ecb82491b45" alt="Welcome Banner" width="375"/>
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
