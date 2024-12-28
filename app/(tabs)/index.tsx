@@ -23,7 +23,7 @@ const actionTypes = {
   REMOVE_FLYOUT_ICON: 'REMOVE_FLYOUT_ICON',
 };
 
-const reducer = (state, action) => {  
+const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.INCREASE_POINTS:
       return { ...state, points: state.points + 1 };
