@@ -17,17 +17,17 @@ const initialState = {
   flyoutIcons: [],
 };
 
-const actionTypes = {
-  INCREASE_POINTS: 'INCREASE_POINTS',
-  ADD_FLYOUT_ICON: 'ADD_FLYOUT_ICON',
-  REMOVE_FLYOUT_ICON: 'REMOVE_FLYOUT_ICON',
-};
+enum ActionTypes {
+  INCREASE_POINTS,
+  ADD_FLYOUT_ICON,
+  REMOVE_FLYOUT_ICON,
+}
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case actionTypes.INCREASE_POINTS:
+    case ActionTypes.INCREASE_POINTS:
       return { ...state, points: state.points + 1 };
-    case actionTypes.ADD_FLYOUT_ICON:
+    case ActionTypes.ADD_FLYOUT_ICON:
       return {
         ...state,
         flyoutIcons: [
@@ -39,7 +39,7 @@ const reducer = (state, action) => {
           },
         ],
       };
-    case actionTypes.REMOVE_FLYOUT_ICON:
+    case ActionTypes.REMOVE_FLYOUT_ICON:
       return {
         ...state,
         flyoutIcons: state.flyoutIcons.filter((icon) => icon.id !== action.id),
@@ -63,9 +63,9 @@ const HomeView = () => {
         <Header points={state.points} />
         <StepCounterView
           onPointIncrease={() => {
-            dispatch({ type: actionTypes.INCREASE_POINTS });
+            dispatch({ type: ActionTypes.INCREASE_POINTS });
             dispatch({
-              type: actionTypes.ADD_FLYOUT_ICON,
+              type: ActionTypes.ADD_FLYOUT_ICON,
               endPosition: {
                 x: Math.random() * (constants.SCREEN_WIDTH / 3),
                 y: 0,
@@ -83,7 +83,7 @@ const HomeView = () => {
             color={Colors.common.highlightColor}
             onAnimationComplete={() =>
               dispatch({
-                type: actionTypes.REMOVE_FLYOUT_ICON,
+                type: ActionTypes.REMOVE_FLYOUT_ICON,
                 id: icon.id,
               })
             }
