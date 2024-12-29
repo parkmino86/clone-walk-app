@@ -7,8 +7,6 @@ type AvailablePointsTextProps = {
 };
 
 export const AvailablePointsText = ({ availablePoints }: AvailablePointsTextProps) => {
-  if (availablePoints <= 0) return null;
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>+{availablePoints.toLocaleString()}</Text>

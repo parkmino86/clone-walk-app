@@ -47,9 +47,11 @@ export function StepCounterView({ onPointIncrease }: StepCounterViewProps) {
     <React.Fragment>
       <Text style={styles.descriptionText}>50걸음 당 1포인트</Text>
       <View style={styles.stepCounterContainer}>
-        <View style={styles.availablePointsWrapper}>
-          <AvailablePointsText availablePoints={availablePoints} />
-        </View>
+        {availablePoints > 0 && (
+          <View style={styles.availablePointsContainer}>
+            <AvailablePointsText availablePoints={availablePoints} />
+          </View>
+        )}
         <PointButton
           scaleAnim={scaleAnim}
           onPressIn={handlePressIn}
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   stepCounterContainer: {
     alignItems: 'center',
   },
-  availablePointsWrapper: {
+  availablePointsContainer: {
     position: 'absolute',
     right: '50%',
     transform: [
