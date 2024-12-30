@@ -37,7 +37,3 @@ yarn-error.*
 
 # example
 app-example
-
-# native directories
-/android
-/ios
