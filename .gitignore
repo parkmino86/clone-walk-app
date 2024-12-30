@@ -37,3 +37,11 @@ yarn-error.*
 
 # example
 app-example
+
+# Ignore iOS build artifacts
+ios/build/
+ios/Pods/
+
+# Ignore Android build artifacts
+android/.gradle/
+android/build/
