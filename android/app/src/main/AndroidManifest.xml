@@ -26,6 +26,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="myapp"/>
         <data android:scheme="com.parkmino86.clonewalkapp"/>
+        <data android:scheme="exp+clone-walk-app"/>
       </intent-filter>
     </activity>
   </application>
