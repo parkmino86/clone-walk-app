@@ -1,10 +1,13 @@
-import React, { useReducer } from 'react';
-import { StyleSheet, SafeAreaView, Dimensions } from 'react-native';
+import React, { useReducer, useEffect } from 'react';
+import { StyleSheet, SafeAreaView, Dimensions, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Header } from '@/components/home/HeaderView';
 import { FlyoutIcon } from '@/components/home/FlyoutIcon';
 import { StepCounterView } from '@/components/home/step-counter/StepCounterView';
 import { Colors } from '@/constants/Colors';
+import { NativeModules } from 'react-native';
+
+const { HealthKitModule } = NativeModules;
 
 const constants = {
   SCREEN_WIDTH: Dimensions.get('window').width,
@@ -14,6 +17,7 @@ const constants = {
 
 interface State {
   points: number;
+  steps: number;
   flyoutIcons: Array<{
     id: number;
     startPosition: { x: number; y: number };
@@ -22,18 +26,22 @@ interface State {
 }
 
 type Action =
-  | { type: "INCREASE_POINTS" }
-  | { type: "ADD_FLYOUT_ICON"; payload: { x: number; y: number } }
-  | { type: "REMOVE_FLYOUT_ICON"; payload: { id: number } };
+  | { type: 'INCREASE_POINTS'; payload: number }
+  | { type: 'SET_STEPS'; payload: number }
+  | { type: 'ADD_FLYOUT_ICON'; payload: { x: number; y: number } }
+  | { type: 'REMOVE_FLYOUT_ICON'; payload: { id: number } };
 
 const HomeView = () => {
   const [state, dispatch] = useReducer(
     (state: State, action: Action): State => {
       switch (action.type) {
-        case "INCREASE_POINTS":
-          return { ...state, points: state.points + 1 };
+        case 'INCREASE_POINTS':
+          return { ...state, points: state.points + action.payload };
 
-        case "ADD_FLYOUT_ICON":
+        case 'SET_STEPS':
+          return { ...state, steps: action.payload };
+
+        case 'ADD_FLYOUT_ICON':
           return {
             ...state,
             flyoutIcons: [
@@ -49,7 +57,7 @@ const HomeView = () => {
             ],
           };
 
-        case "REMOVE_FLYOUT_ICON":
+        case 'REMOVE_FLYOUT_ICON':
           return {
             ...state,
             flyoutIcons: state.flyoutIcons.filter(
@@ -63,9 +71,34 @@ const HomeView = () => {
     },
     {
       points: 0,
+      steps: 0,
       flyoutIcons: [],
     }
   );
+
+  useEffect(() => {
+    const initializeHealthKit = async () => {
+      try {
+        const isAvailable = await HealthKitModule.isHealthDataAvailable();
+        if (!isAvailable) {
+          Alert.alert('Health Data Unavailable', 'Health data is not available on this device.');
+          return;
+        }
+    
+        await HealthKitModule.requestAuthorization();
+        const steps = await HealthKitModule.getStepCount("2025-01-02");
+    
+        dispatch({ type: 'SET_STEPS', payload: steps });
+    
+        const points = Math.floor(steps / 50);
+        dispatch({ type: 'INCREASE_POINTS', payload: points });
+      } catch (error) {
+        Alert.alert('HealthKit Error', `An error occurred: ${error instanceof Error ? error.message : String(error)}`);
+      }
+    };
+
+    initializeHealthKit();
+  }, []);
 
   return (
     <LinearGradient
@@ -78,15 +111,16 @@ const HomeView = () => {
         <Header points={state.points} />
         <StepCounterView
           onPointIncrease={() => {
-            dispatch({ type: "INCREASE_POINTS" });
+            dispatch({ type: 'INCREASE_POINTS', payload: 1 });
             dispatch({
-              type: "ADD_FLYOUT_ICON",
+              type: 'ADD_FLYOUT_ICON',
               payload: {
                 x: Math.random() * (constants.SCREEN_WIDTH / 3),
                 y: 0,
               },
             });
           }}
+          steps={state.steps}
         />
         {state.flyoutIcons.map((icon) => (
           <FlyoutIcon
@@ -98,7 +132,7 @@ const HomeView = () => {
             color={Colors.common.highlightColor}
             onAnimationComplete={() =>
               dispatch({
-                type: "REMOVE_FLYOUT_ICON",
+                type: 'REMOVE_FLYOUT_ICON',
                 payload: { id: icon.id },
               })
             }

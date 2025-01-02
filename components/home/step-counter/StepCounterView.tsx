@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import { AvailablePointsText } from './AvailablePointsText';
 import { PointButton } from './PointButton';
@@ -6,21 +6,16 @@ import { StepCountText } from './StepCountText';
 import { Colors } from '@/constants/Colors';
 
 type StepCounterViewProps = {
+  steps: number;
   onPointIncrease: () => void;
 };
 
-export function StepCounterView({ onPointIncrease }: StepCounterViewProps) {
-  const [steps, setSteps] = useState(100);
-  const [collectedPoints, setCollectedPoints] = useState(0);
+export function StepCounterView({ steps, onPointIncrease }: StepCounterViewProps) {
+  const [collectedPoints, setCollectedPoints] = React.useState(0);
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
   const totalPoints = Math.floor(steps / 50);
   const availablePoints = totalPoints - collectedPoints;
-
-  useEffect(() => {
-    const interval = setInterval(() => setSteps((prev) => prev + 10), 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handlePressIn = () => {
     Animated.timing(scaleAnim, {
@@ -77,10 +72,7 @@ const styles = StyleSheet.create({
   availablePointsContainer: {
     position: 'absolute',
     right: '50%',
-    transform: [
-      { translateX: '-50%' },
-      { translateY: '25%' },
-    ],
+    transform: [{ translateX: '-50%' }, { translateY: '25%' }],
     zIndex: 10,
   },
 });

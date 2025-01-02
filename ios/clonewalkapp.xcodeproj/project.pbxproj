@@ -16,6 +16,8 @@
 		96905EF65AED1B983A6B3ABC /* libPods-clonewalkapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-clonewalkapp.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		E3CCFE692D26CFBB00ACEA16 /* HealthKitModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CCFE682D26CFBB00ACEA16 /* HealthKitModule.swift */; };
+		E3CCFE6B2D26D11200ACEA16 /* HealthKitModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CCFE6A2D26D11200ACEA16 /* HealthKitModuleBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = clonewalkapp/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		BF2A20BFB611F57F5EC5EB39 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = clonewalkapp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		E3CCFE682D26CFBB00ACEA16 /* HealthKitModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitModule.swift; sourceTree = "<group>"; };
+		E3CCFE6A2D26D11200ACEA16 /* HealthKitModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthKitModuleBridge.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-clonewalkapp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +56,7 @@
 		13B07FAE1A68108700A75B9A /* clonewalkapp */ = {
 			isa = PBXGroup;
 			children = (
+				E3CCFE6C2D26D11F00ACEA16 /* HealthKitModule */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -137,6 +142,15 @@
 				92DBD88DE9BF7D494EA9DA96 /* clonewalkapp */,
 			);
 			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		E3CCFE6C2D26D11F00ACEA16 /* HealthKitModule */ = {
+			isa = PBXGroup;
+			children = (
+				E3CCFE682D26CFBB00ACEA16 /* HealthKitModule.swift */,
+				E3CCFE6A2D26D11200ACEA16 /* HealthKitModuleBridge.m */,
+			);
+			path = HealthKitModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +294,8 @@
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/boost/boost_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/glog/glog_privacy.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -292,6 +308,8 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/boost_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/glog_privacy.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +346,8 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
+				E3CCFE6B2D26D11200ACEA16 /* HealthKitModuleBridge.m in Sources */,
+				E3CCFE692D26CFBB00ACEA16 /* HealthKitModule.swift in Sources */,
 				1AFA27079CB541CF834A9015 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,7 +383,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parkmino86.clonewalkapp;
-				PRODUCT_NAME = "clonewalkapp";
+				PRODUCT_NAME = clonewalkapp;
 				SWIFT_OBJC_BRIDGING_HEADER = "clonewalkapp/clonewalkapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -395,7 +415,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parkmino86.clonewalkapp;
-				PRODUCT_NAME = "clonewalkapp";
+				PRODUCT_NAME = clonewalkapp;
 				SWIFT_OBJC_BRIDGING_HEADER = "clonewalkapp/clonewalkapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -458,7 +478,10 @@
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -513,7 +536,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
