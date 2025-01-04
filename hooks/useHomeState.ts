@@ -2,7 +2,6 @@ import { useReducer } from 'react';
 import { Dimensions } from 'react-native';
 
 interface State {
-  points: number;
   steps: number;
   flyoutIcons: Array<{
     id: number;
@@ -13,13 +12,11 @@ interface State {
 }
 
 type Action =
-  | { type: 'INCREASE_POINTS'; payload: number }
   | { type: 'SET_STEPS'; payload: number }
   | { type: 'ADD_FLYOUT_ICON'; payload: { x: number; y: number } }
   | { type: 'REMOVE_FLYOUT_ICON'; payload: { id: number } };
 
 const initialState: State = {
-  points: 0,
   steps: 0,
   flyoutIcons: [],
   rewardSteps: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
@@ -27,9 +24,6 @@ const initialState: State = {
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'INCREASE_POINTS':
-      return { ...state, points: state.points + action.payload };
-
     case 'SET_STEPS':
       return { ...state, steps: action.payload };
 

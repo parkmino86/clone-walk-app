@@ -8,9 +8,11 @@ import { StepRewardListView } from '@/components/home/step-reward/StepRewardList
 import { Colors } from '@/constants/Colors';
 import { useHomeState } from '@/hooks/useHomeState';
 import { useFetchStepCount } from '@/hooks/healthKit/useFetchStepCount';
+import { usePoints } from '@/context/PointsContext';
 
 const HomeView = () => {
   const [state, dispatch] = useHomeState();
+  const { state: pointsState, dispatch: pointsDispatch } = usePoints();
 
   useFetchStepCount((result) => {
     switch (result.status) {
@@ -33,10 +35,10 @@ const HomeView = () => {
       style={styles.gradient}
     >
       <SafeAreaView style={styles.safeArea}>
-        <Header points={state.points} />
+        <Header points={pointsState.points} />
         <StepCounterView
           onPointIncrease={() => {
-            dispatch({ type: 'INCREASE_POINTS', payload: 1 });
+            pointsDispatch({ type: 'INCREASE_POINTS', payload: 1 });
             dispatch({
               type: 'ADD_FLYOUT_ICON',
               payload: {
