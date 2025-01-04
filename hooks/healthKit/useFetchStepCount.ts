@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import healthKitService from '@/services/healthKitService';
+import healthKitService from '@/services/healthKitService.ios';
 
 type StepCountResult =
   | { status: 'success'; steps: number }
@@ -24,7 +24,7 @@ export const useFetchStepCount = (callback: (result: StepCountResult) => void, d
 
         await healthKitService.requestAuthorization();
 
-        const steps = await healthKitService.getStepCount("2025-01-02");
+        const steps = await healthKitService.getStepCount();
         callback({ status: 'success', steps });
       } catch (error) {
         const errorMessage =

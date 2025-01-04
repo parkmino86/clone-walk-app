@@ -11,6 +11,6 @@
 
 RCT_EXTERN_METHOD(isHealthDataAvailable:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(requestAuthorization:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
-RCT_EXTERN_METHOD(getStepCount:(NSString *)startDate resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(getStepCount:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 
 @end

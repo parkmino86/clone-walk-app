@@ -40,13 +40,12 @@ class HealthKitModule: NSObject {
         }
     }
 
-    /// 주어진 시작 날짜부터 총 걸음 수를 가져옵니다.
+    /// 총 걸음 수를 가져옵니다.
     /// - Parameters:
-    ///   - startDate: 시작 날짜를 나타내는 ISO8601 형식의 문자열.
     ///   - resolve: 총 걸음 수를 `Double` 형식으로 반환합니다.
     ///   - reject: 쿼리 실패 또는 잘못된 날짜 형식일 경우 에러를 반환합니다.
     @objc
-    func getStepCount(_ startDate: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+    func getStepCount(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         guard let stepType = HKSampleType.quantityType(forIdentifier: .stepCount) else {
             reject("TYPE_ERROR", "Step count type not available", nil)
             return

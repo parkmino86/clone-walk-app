@@ -26,15 +26,10 @@ const requestAuthorization = async (): Promise<void> => {
 };
 
 /**
- * 지정된 날짜의 걸음 수를 가져옵니다.
- * 
- * @param date - 걸음 수를 조회할 날짜 (YYYY-MM-DD 형식)
+ * 걸음 수를 가져옵니다.
  */
-const getStepCount = async (date: string): Promise<number> => {
-  if (!date) {
-    throw new Error('getStepCount에 필요한 날짜 매개변수가 없습니다.');
-  }
-  return await HealthKitModule.getStepCount(date);
+const getStepCount = async (): Promise<number> => {
+  return await HealthKitModule.getStepCount();
 };
 
 const healthKitService = {
