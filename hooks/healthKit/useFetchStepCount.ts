@@ -10,8 +10,9 @@ type StepCountResult =
  * 결과를 callback으로 전달합니다.
  *
  * @param callback - 결과를 처리할 콜백 함수
+ * @param deps - useEffect의 의존성 배열
  */
-export const useFetchStepCount = (callback: (result: StepCountResult) => void) => {
+export const useFetchStepCount = (callback: (result: StepCountResult) => void, deps: any[] = []) => {
   useEffect(() => {
     const fetchStepCount = async () => {
       try {
@@ -33,5 +34,5 @@ export const useFetchStepCount = (callback: (result: StepCountResult) => void) =
     };
 
     fetchStepCount();
-  }, []);
+  }, deps);
 };

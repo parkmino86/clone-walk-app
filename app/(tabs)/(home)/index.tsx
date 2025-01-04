@@ -23,7 +23,7 @@ const HomeView = () => {
       default:
         break;
     }
-  });
+  }, []);
 
   return (
     <LinearGradient
