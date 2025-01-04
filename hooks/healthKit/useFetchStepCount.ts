@@ -20,5 +20,5 @@ export const useFetchStepCount = (callback: (result: StepCountResult) => void) =
     };
 
     fetchStepCount();
-  }, [callback]);
+  }, []);
 };
