@@ -1,102 +1,29 @@
-import React, { useReducer, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, Dimensions, Alert } from 'react-native';
+import React from 'react';
+import { Alert, Dimensions, SafeAreaView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Header } from '@/components/home/HeaderView';
 import { FlyoutIcon } from '@/components/home/FlyoutIcon';
 import { StepCounterView } from '@/components/home/step-counter/StepCounterView';
 import { Colors } from '@/constants/Colors';
-import { NativeModules } from 'react-native';
-
-const { HealthKitModule } = NativeModules;
-
-const constants = {
-  SCREEN_WIDTH: Dimensions.get('window').width,
-  SCREEN_HEIGHT: Dimensions.get('window').height,
-  ICON_SIZE: 60,
-};
-
-interface State {
-  points: number;
-  steps: number;
-  flyoutIcons: Array<{
-    id: number;
-    startPosition: { x: number; y: number };
-    endPosition: { x: number; y: number };
-  }>;
-}
-
-type Action =
-  | { type: 'INCREASE_POINTS'; payload: number }
-  | { type: 'SET_STEPS'; payload: number }
-  | { type: 'ADD_FLYOUT_ICON'; payload: { x: number; y: number } }
-  | { type: 'REMOVE_FLYOUT_ICON'; payload: { id: number } };
+import { useHomeState } from '@/hooks/useHomeState';
+import { useFetchStepCount } from '@/hooks/healthKit/useFetchStepCount';
 
 const HomeView = () => {
-  const [state, dispatch] = useReducer(
-    (state: State, action: Action): State => {
-      switch (action.type) {
-        case 'INCREASE_POINTS':
-          return { ...state, points: state.points + action.payload };
+  const [state, dispatch] = useHomeState();
 
-        case 'SET_STEPS':
-          return { ...state, steps: action.payload };
-
-        case 'ADD_FLYOUT_ICON':
-          return {
-            ...state,
-            flyoutIcons: [
-              ...state.flyoutIcons,
-              {
-                id: Date.now(),
-                startPosition: {
-                  x: (constants.SCREEN_WIDTH - constants.ICON_SIZE) / 2,
-                  y: constants.SCREEN_HEIGHT / 5,
-                },
-                endPosition: { x: action.payload.x, y: action.payload.y },
-              },
-            ],
-          };
-
-        case 'REMOVE_FLYOUT_ICON':
-          return {
-            ...state,
-            flyoutIcons: state.flyoutIcons.filter(
-              (icon) => icon.id !== action.payload.id
-            ),
-          };
-
-        default:
-          return state;
-      }
-    },
-    {
-      points: 0,
-      steps: 0,
-      flyoutIcons: [],
+  useFetchStepCount((result) => {
+    switch (result.status) {
+      case 'success':
+        dispatch({ type: 'SET_STEPS', payload: result.steps });
+        dispatch({ type: 'INCREASE_POINTS', payload: Math.floor(result.steps / 50) });
+        break;
+      case 'error':
+        Alert.alert('HealthKit Error', `An error occurred: ${result.error}`);
+        break;
+      default:
+        break;
     }
-  );
-
-  useEffect(() => {
-    const initializeHealthKit = async () => {
-      try {
-        const isAvailable = await HealthKitModule.isHealthDataAvailable();
-        if (!isAvailable) {
-          Alert.alert('Health Data Unavailable', 'Health data is not available on this device.');
-          return;
-        }
-    
-        await HealthKitModule.requestAuthorization();
-        const steps = await HealthKitModule.getStepCount("2025-01-02");    
-        dispatch({ type: 'SET_STEPS', payload: steps });
-        dispatch({ type: 'INCREASE_POINTS', payload: Math.floor(steps / 50) });
-
-      } catch (error) {
-        Alert.alert('HealthKit Error', `An error occurred: ${error instanceof Error ? error.message : String(error)}`);
-      }
-    };
-    initializeHealthKit();
-
-  }, []);
+  });
 
   return (
     <LinearGradient
@@ -113,7 +40,7 @@ const HomeView = () => {
             dispatch({
               type: 'ADD_FLYOUT_ICON',
               payload: {
-                x: Math.random() * (constants.SCREEN_WIDTH / 3),
+                x: Math.random() * (Dimensions.get('window').width / 3),
                 y: 0,
               },
             });
@@ -126,7 +53,7 @@ const HomeView = () => {
             name="p.circle.fill"
             startPosition={icon.startPosition}
             endPosition={icon.endPosition}
-            size={constants.ICON_SIZE}
+            size={60}
             color={Colors.common.highlightColor}
             onAnimationComplete={() =>
               dispatch({
