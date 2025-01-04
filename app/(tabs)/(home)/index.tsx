@@ -15,7 +15,6 @@ const HomeView = () => {
     switch (result.status) {
       case 'success':
         dispatch({ type: 'SET_STEPS', payload: result.steps });
-        dispatch({ type: 'INCREASE_POINTS', payload: Math.floor(result.steps / 50) });
         break;
       case 'error':
         Alert.alert('HealthKit Error', `An error occurred: ${result.error}`);
