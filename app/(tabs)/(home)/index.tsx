@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, Dimensions, SafeAreaView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Header } from '@/components/home/HeaderView';
-import { FlyoutIcon } from '@/components/home/FlyoutIcon';
+import { FlyoutIcon } from '@/components/ui/icons/FlyoutIcon';
 import { StepCounterView } from '@/components/home/step-counter/StepCounterView';
 import { Colors } from '@/constants/Colors';
 import { useHomeState } from '@/hooks/useHomeState';
