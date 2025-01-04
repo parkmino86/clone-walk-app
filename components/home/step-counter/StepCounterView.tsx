@@ -60,10 +60,10 @@ export function StepCounterView({ steps, onPointIncrease }: StepCounterViewProps
 
 const styles = StyleSheet.create({
   descriptionText: {
-    fontSize: 16,
-    color: Colors.common.descriptionTextColor,
+    fontSize: 15,
+    color: Colors.common.textColor,
     fontWeight: '300',
-    marginTop: 20,
+    marginTop: 16,
     textAlign: 'center',
   },
   stepCounterContainer: {

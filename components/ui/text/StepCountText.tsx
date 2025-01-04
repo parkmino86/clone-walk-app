@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Colors } from '@/constants/Colors';
 
 export const StepCountText = ({ steps }: { steps: number }) => (
   <View style={styles.container}>
@@ -13,17 +14,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 16,
   },
   number: {
-    fontSize: 42,
+    fontSize: 36,
     color: '#000',
     fontWeight: '700',
   },
   text: {
-    fontSize: 20,
-    color: '#4D4D4D',
-    fontWeight: '300',
-    marginLeft: 8,
+    fontSize: 16,
+    color: Colors.common.textColor,
+    marginLeft: 4,
   },
 });

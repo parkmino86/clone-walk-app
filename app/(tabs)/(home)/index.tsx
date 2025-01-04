@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Header } from '@/components/home/HeaderView';
 import { FlyoutIcon } from '@/components/ui/icons/FlyoutIcon';
 import { StepCounterView } from '@/components/home/step-counter/StepCounterView';
+import { StepRewardListView } from '@/components/home/step-reward/StepRewardListView';
 import { Colors } from '@/constants/Colors';
 import { useHomeState } from '@/hooks/useHomeState';
 import { useFetchStepCount } from '@/hooks/healthKit/useFetchStepCount';
@@ -46,6 +47,7 @@ const HomeView = () => {
           }}
           steps={state.steps}
         />
+        <StepRewardListView rewards={state.rewardSteps} currentSteps={state.steps} />
         {state.flyoutIcons.map((icon) => (
           <FlyoutIcon
             key={icon.id}

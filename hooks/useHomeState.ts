@@ -9,6 +9,7 @@ interface State {
     startPosition: { x: number; y: number };
     endPosition: { x: number; y: number };
   }>;
+  rewardSteps: number[];
 }
 
 type Action =
@@ -21,6 +22,7 @@ const initialState: State = {
   points: 0,
   steps: 0,
   flyoutIcons: [],
+  rewardSteps: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
 };
 
 const reducer = (state: State, action: Action): State => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { View, Animated, StyleSheet } from 'react-native';
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/icons/IconSymbol';
@@ -10,7 +10,7 @@ type PointButtonProps = {
   onPressOut: () => void;
 };
 
-export const PointButton = ({ scaleAnim, onPressIn, onPressOut }: PointButtonProps) => (
+export const PointButton: FC<PointButtonProps> = ({ scaleAnim, onPressIn, onPressOut }) => (
   <View style={styles.container}>
     <HapticTab onPressIn={onPressIn} onPressOut={onPressOut}>
       <Animated.View style={[styles.icon, { transform: [{ scale: scaleAnim }] }]}>

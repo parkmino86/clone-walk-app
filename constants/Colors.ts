@@ -29,6 +29,7 @@ export const Colors = {
     borderColor: '#FF8C42',
     highlightColor: '#FFD700',
     tagBackgroundColor: '#FD8700',
+    textColor: '#333333',
     descriptionTextColor: '#4D4D4D',
   }
 };

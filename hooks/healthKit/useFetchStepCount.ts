@@ -18,7 +18,7 @@ export const useFetchStepCount = (callback: (result: StepCountResult) => void, d
       try {
         const isAvailable = await healthKitService.isHealthDataAvailable();
         if (!isAvailable) {
-          callback({ status: 'error', error: 'Health data is not available on this device.' });
+          callback({ status: 'error', error: 'Health data is not available on this device.' });          
           return;
         }
 
