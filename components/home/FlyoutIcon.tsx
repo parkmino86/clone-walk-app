@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, StyleSheet } from 'react-native';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { IconSymbol } from '@/components/ui/icons/IconSymbol';
 import { Colors } from '@/constants/Colors';
 
 export const FlyoutIcon = ({

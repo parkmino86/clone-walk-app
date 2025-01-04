@@ -86,18 +86,16 @@ const HomeView = () => {
         }
     
         await HealthKitModule.requestAuthorization();
-        const steps = await HealthKitModule.getStepCount("2025-01-02");
-    
+        const steps = await HealthKitModule.getStepCount("2025-01-02");    
         dispatch({ type: 'SET_STEPS', payload: steps });
-    
-        const points = Math.floor(steps / 50);
-        dispatch({ type: 'INCREASE_POINTS', payload: points });
+        dispatch({ type: 'INCREASE_POINTS', payload: Math.floor(steps / 50) });
+
       } catch (error) {
         Alert.alert('HealthKit Error', `An error occurred: ${error instanceof Error ? error.message : String(error)}`);
       }
     };
-
     initializeHealthKit();
+
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Animated, StyleSheet } from 'react-native';
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { IconSymbol } from '@/components/ui/icons/IconSymbol';
 import { Colors } from '@/constants/Colors';
 
 type PointButtonProps = {
