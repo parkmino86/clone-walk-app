@@ -56,7 +56,7 @@ export function RewardButton({ targetSteps: stepsRequired, currentStepCount: cur
 
   return (
     <LinearGradient
-      colors={['#FFFFFF', '#FFDCB5']}
+      colors={[Colors.common.white, '#FFEEDB']}
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       style={styles.wrapper}
@@ -82,7 +82,7 @@ export function RewardButton({ targetSteps: stepsRequired, currentStepCount: cur
         disabled={state.status !== 'enabled'}
       >
         <View style={styles.buttonContent}>
-          <IconSymbol name="p.circle.fill" size={20} color={Colors.common.highlightColor} />
+          <IconSymbol name="p.circle.fill" size={20} color={Colors.common.yellow} />
           {state.status === 'completed' ? (
             <Text style={styles.completedText}>{state.receivedPoints} 받음</Text>
           ) : (
@@ -103,7 +103,7 @@ export function RewardButton({ targetSteps: stepsRequired, currentStepCount: cur
 const styles = StyleSheet.create({
   wrapper: {
     width: 140,
-    padding: 16,
+    padding: Colors.common.padding,
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
@@ -117,9 +117,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    backgroundColor: '#FF8902',
+    backgroundColor: Colors.common.primaryAccent,
     paddingVertical: 8,
-    paddingHorizontal: 16,
+    paddingHorizontal: Colors.common.padding,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',

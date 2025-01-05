@@ -8,7 +8,7 @@ export const FlyoutIcon = ({
   startPosition,
   endPosition,
   size = 40,
-  color = Colors.common.highlightColor,
+  color = Colors.common.yellow,
   onAnimationComplete,
 }: {
   name: string;

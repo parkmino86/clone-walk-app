@@ -7,11 +7,11 @@ type HeaderProps = {
   points: number;
 };
 
-export function Header({ points }: HeaderProps) {
+export function HomeHeaderView({ points }: HeaderProps) {
   return (
     <View style={styles.header}>
       <View style={styles.pointContainer}>
-        <IconSymbol name="p.circle.fill" size={28} color={Colors.common.highlightColor} />
+        <IconSymbol name="p.circle.fill" size={28} color={Colors.common.yellow} />
         <Text style={styles.pointText}>{points.toLocaleString()}p</Text>
       </View>
       <View style={styles.headerIcons}>
@@ -27,8 +27,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingTop: 16,
+    paddingHorizontal: Colors.common.padding,
   },
   pointContainer: {
     flexDirection: 'row',

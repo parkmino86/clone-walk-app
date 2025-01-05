@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
-import { AvailablePointsText } from '../../ui/text/AvailablePointsText';
-import { PointButton } from '../../ui/buttons/PointButton';
-import { StepCountText } from '../../ui/text/StepCountText';
+import { AvailablePointsText } from '@/components/ui/text/AvailablePointsText';
+import { PointButton } from '@/components/ui/buttons/PointButton';
+import { StepCountText } from '@/components/ui/text/StepCountText';
 import { Colors } from '@/constants/Colors';
 
 type StepCounterViewProps = {
@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.common.textColor,
     fontWeight: '300',
-    marginTop: 16,
     textAlign: 'center',
   },
   stepCounterContainer: {

@@ -5,7 +5,7 @@ export default function BlankScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.placeholderText}>This is a blank screen</Text>
+        <Text style={styles.placeholderText}>This is a giftshop screen</Text>
       </View>
     </SafeAreaView>
   );

@@ -14,7 +14,7 @@ export const PointButton: FC<PointButtonProps> = ({ scaleAnim, onPressIn, onPres
   <View style={styles.container}>
     <HapticTab onPressIn={onPressIn} onPressOut={onPressOut}>
       <Animated.View style={[styles.icon, { transform: [{ scale: scaleAnim }] }]}>
-        <IconSymbol name="p.circle.fill" size={120} color={Colors.common.highlightColor} />
+        <IconSymbol name="p.circle.fill" size={120} color={Colors.common.yellow} />
       </Animated.View>
     </HapticTab>
   </View>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   icon: {
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: Colors.common.appShadowColor,
+    shadowColor: Colors.common.primaryShadowColor,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.6,
     shadowRadius: 6,
