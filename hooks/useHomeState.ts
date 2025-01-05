@@ -17,7 +17,7 @@ type Action =
   | { type: 'REMOVE_FLYOUT_ICON'; payload: { id: number } };
 
 const initialState: State = {
-  steps: 0,
+  steps: 10000,
   flyoutIcons: [],
   rewardSteps: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
 };

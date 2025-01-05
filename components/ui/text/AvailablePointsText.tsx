@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.common.tagBackgroundColor,
+    backgroundColor: Colors.common.primaryAccent,
     borderRadius: 16,
     height: 32,
     paddingHorizontal: 8,

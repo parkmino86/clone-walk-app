@@ -36,36 +36,7 @@ const HomeView = () => {
     <ScrollView
       stickyHeaderIndices={[0]}
     >
-      <View style={[styles.stickyHeader, { paddingTop: useSafeAreaInsets().top }]}>
-        <HomeHeaderView points={pointsState.points} />
-      </View>
-
-      <LinearGradient
-        colors={[Colors.common.primary, Colors.light.background]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-      >
-        <View style={styles.stepSection}>
-          <StepCounterView
-            onPointIncrease={() => {
-              pointsDispatch({ type: 'INCREASE_POINTS', payload: 1 });
-              dispatch({
-                type: 'ADD_FLYOUT_ICON',
-                payload: {
-                  x: Math.random() * (Dimensions.get('window').width / 3),
-                  y: 0,
-                },
-              });
-            }}
-            steps={state.steps}
-          />
-          <StepRewardListView rewards={state.rewardSteps} currentSteps={state.steps} />
-          <DailyCheckBannerView style={styles.dailyCheckBanner} />
-        </View>
-      </LinearGradient>
-
-      <View style={[styles.earningPointsSection, { paddingBottom: 100 + useSafeAreaInsets().bottom }]}>
-        <EarningPointsView />
+      <View>
         {state.flyoutIcons.map((icon) => (
           <FlyoutIcon
             key={icon.id}
@@ -83,13 +54,45 @@ const HomeView = () => {
           />
         ))}
       </View>
+
+      <View style={[styles.stickyHeader, { paddingTop: useSafeAreaInsets().top }]}>
+        <HomeHeaderView points={pointsState.points} />        
+      </View>
+
+      <LinearGradient
+        colors={[Colors.common.primary, Colors.light.background]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+      >
+        <View style={styles.stepSection}>             
+          <StepCounterView
+            onPointIncrease={() => {
+              pointsDispatch({ type: 'INCREASE_POINTS', payload: 1 });
+              dispatch({
+                type: 'ADD_FLYOUT_ICON',
+                payload: {
+                  x: Math.random() * (Dimensions.get('window').width / 3),
+                  y: 0,
+                },
+              });
+            }}
+            steps={state.steps}
+          />          
+          <StepRewardListView rewards={state.rewardSteps} currentSteps={state.steps} />
+          <DailyCheckBannerView style={styles.dailyCheckBanner} />
+        </View>
+      </LinearGradient>
+
+      <View style={[styles.earningPointsSection, { paddingBottom: 100 + useSafeAreaInsets().bottom }]}>
+        <EarningPointsView />        
+      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({  
   stickyHeader: {
-    zIndex: 10,
+    zIndex: 1,
     backgroundColor: Colors.common.primary,
     paddingBottom: Colors.common.padding,
   },
