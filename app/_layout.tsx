@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/color/useColorScheme';
-import { PointsProvider } from '@/context/PointsContext';  // PointsProvider 추가
+import { PointsProvider } from '@/context/PointsContext';
 
 SplashScreen.preventAutoHideAsync();
 
