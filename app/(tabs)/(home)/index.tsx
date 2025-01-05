@@ -3,15 +3,15 @@ import { Alert, Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { HomeHeaderView } from '@/features/home/HomeHeaderView';
-import { StepRewardEffect } from '@/components/ui/effects/StepRewardEffect';
 import { StepCounterView } from '@/features/home/step-counter/StepCounterView';
 import { DailyCheckBannerView } from '@/features/home/daily-check/DailyCheckView';
 import { StepRewardListView } from '@/features/home/step-reward/StepRewardListView';
 import { EarningPointsView } from '@/features/home/earning-points/EarningPointsView';
 import { EarningShortcutsView } from '@/features/home/earning-shortcuts/EarningShortcutsView';
 import { HealthShortcutsView } from '@/features/home/health-shortcuts/HealthShortcutsView';
+import { StepRewardEffect } from '@/components/ui/effects/StepRewardEffect';
 import { Colors } from '@/constants/Colors';
-import { useHomeState } from '@/app/(tabs)/(home)/useHomeState';
+import { useHomeState } from '@/features/home/useHomeState';
 import { useFetchStepCount } from '@/hooks/healthKit/useFetchStepCount';
 import { usePoints } from '@/context/PointsContext';
 
@@ -94,7 +94,7 @@ const HomeView = () => {
   );
 };
 
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   stickyHeader: {
     backgroundColor: Colors.common.primary,
     paddingBottom: Colors.common.padding,

@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import { IconSymbol } from '@/components/ui/icons/IconSymbol';
+import { IconSymbol, IconSymbolName } from '@/components/ui/icons/IconSymbol';
 
 type EarningShortcutsCardItemProps = {
   id: number;
   title: string;
   description: string;
-  icon: string;
+  icon: IconSymbolName;
 };
 
 export function EarningShortcutsCardItem({

@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import { IconSymbol } from '@/components/ui/icons/IconSymbol';
+import { IconSymbol, IconSymbolName } from '@/components/ui/icons/IconSymbol';
 
 type HealthShortcutsCardItemProps = {
   title: string;
   description: string;
-  icon: string;
+  icon: IconSymbolName;
 };
 
 export function HealthShortcutsCardItem({

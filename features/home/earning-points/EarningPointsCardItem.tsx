@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import { IconSymbol } from '@/components/ui/icons/IconSymbol';
+import { IconSymbol, IconSymbolName } from '@/components/ui/icons/IconSymbol';
 
 interface EarningPointsCardItemProps {
   title: string;
-  icon: string;
+  icon: IconSymbolName;
   onPress: () => void;
 }
 
