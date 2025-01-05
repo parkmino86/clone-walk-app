@@ -2,14 +2,16 @@ import React from 'react';
 import { Alert, Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { HomeHeaderView } from '@/components/features/home/HomeHeaderView';
-import { FlyoutIcon } from '@/components/ui/icons/FlyoutIcon';
-import { StepCounterView } from '@/components/features/home/step-counter/StepCounterView';
-import { DailyCheckBannerView } from '@/components/features/home/daily-check/DailyCheckView';
-import { StepRewardListView } from '@/components/features/home/step-reward/StepRewardListView';
-import { EarningPointsView } from '@/components/features/home/earning-points/EarningPointsView';
+import { HomeHeaderView } from '@/features/home/HomeHeaderView';
+import { StepRewardEffect } from '@/components/ui/effects/StepRewardEffect';
+import { StepCounterView } from '@/features/home/step-counter/StepCounterView';
+import { DailyCheckBannerView } from '@/features/home/daily-check/DailyCheckView';
+import { StepRewardListView } from '@/features/home/step-reward/StepRewardListView';
+import { EarningPointsView } from '@/features/home/earning-points/EarningPointsView';
+import { EarningShortcutsView } from '@/features/home/earning-shortcuts/EarningShortcutsView';
+import { HealthShortcutsView } from '@/features/home/health-shortcuts/HealthShortcutsView';
 import { Colors } from '@/constants/Colors';
-import { useHomeState } from '@/hooks/useHomeState';
+import { useHomeState } from '@/app/(tabs)/(home)/useHomeState';
 import { useFetchStepCount } from '@/hooks/healthKit/useFetchStepCount';
 import { usePoints } from '@/context/PointsContext';
 
@@ -34,11 +36,11 @@ const HomeView = () => {
 
   return (
     <ScrollView
-      stickyHeaderIndices={[0]}
+      stickyHeaderIndices={[1]}
     >
       <View>
         {state.flyoutIcons.map((icon) => (
-          <FlyoutIcon
+          <StepRewardEffect
             key={icon.id}
             name="p.circle.fill"
             startPosition={icon.startPosition}
@@ -84,7 +86,9 @@ const HomeView = () => {
       </LinearGradient>
 
       <View style={[styles.earningPointsSection, { paddingBottom: 100 + useSafeAreaInsets().bottom }]}>
-        <EarningPointsView />        
+        <EarningPointsView />    
+        <EarningShortcutsView />    
+        <HealthShortcutsView />
       </View>
     </ScrollView>
   );
@@ -92,7 +96,6 @@ const HomeView = () => {
 
 const styles = StyleSheet.create({  
   stickyHeader: {
-    zIndex: 1,
     backgroundColor: Colors.common.primary,
     paddingBottom: Colors.common.padding,
   },

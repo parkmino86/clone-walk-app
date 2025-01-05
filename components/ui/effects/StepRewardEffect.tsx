@@ -3,7 +3,7 @@ import { Animated, StyleSheet } from 'react-native';
 import { IconSymbol } from '@/components/ui/icons/IconSymbol';
 import { Colors } from '@/constants/Colors';
 
-export const FlyoutIcon = ({
+export const StepRewardEffect = ({
   name,
   startPosition,
   endPosition,
@@ -54,5 +54,6 @@ export const FlyoutIcon = ({
 const styles = StyleSheet.create({
   iconContainer: {
     position: 'absolute',
+    zIndex: 999,
   },
 });

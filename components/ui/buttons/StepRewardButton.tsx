@@ -4,13 +4,13 @@ import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/icons/IconSymbol';
 import { Colors } from '@/constants/Colors';
 
-type PointButtonProps = {
+type StepRewardButtonProps = {
   scaleAnim: Animated.Value;
   onPressIn: () => void;
   onPressOut: () => void;
 };
 
-export const PointButton: FC<PointButtonProps> = ({ scaleAnim, onPressIn, onPressOut }) => (
+export const StepRewardButton: FC<StepRewardButtonProps> = ({ scaleAnim, onPressIn, onPressOut }) => (
   <View style={styles.container}>
     <HapticTab onPressIn={onPressIn} onPressOut={onPressOut}>
       <Animated.View style={[styles.icon, { transform: [{ scale: scaleAnim }] }]}>

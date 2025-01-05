@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import { EarningPointsCardItem } from '@/components/ui/cardItem/EarningPointsCardItem';
+import { EarningPointsCardItem } from '@/features/home/earning-points/EarningPointsCardItem';
 
 export function EarningPointsView() {
   const cards = [

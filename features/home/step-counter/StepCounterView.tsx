@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import { AvailablePointsText } from '@/components/ui/text/AvailablePointsText';
-import { PointButton } from '@/components/ui/buttons/PointButton';
+import { StepRewardButton } from '@/components/ui/buttons/StepRewardButton';
 import { StepCountText } from '@/components/ui/text/StepCountText';
 import { Colors } from '@/constants/Colors';
 
@@ -47,7 +47,7 @@ export function StepCounterView({ steps, onPointIncrease }: StepCounterViewProps
             <AvailablePointsText availablePoints={availablePoints} />
           </View>
         )}
-        <PointButton
+        <StepRewardButton
           scaleAnim={scaleAnim}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
