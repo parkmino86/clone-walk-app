@@ -4,6 +4,82 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Project Structure
+```
+CLONE-WALK-APP
+├── .expo
+├── android
+├── app
+│   ├── (tabs)
+│   │   ├── home
+│   │   │   └── index.tsx
+│   │   ├── benefits
+│   │   │   └── index.tsx
+│   │   ├── giftshop
+│   │   │   └── index.tsx
+│   │   ├── health
+│   │   │   └── index.tsx
+│   │   └── news
+│   │       ├── index.tsx
+│   │       ├── _layout.tsx
+│   │       └── +not-found.tsx
+├── assets
+├── components
+│   ├── __tests__
+│   ├── ui
+│   │   ├── background
+│   │   ├── buttons
+│   │   │   ├── RewardButton.tsx
+│   │   │   └── StepRewardButton.tsx
+│   │   ├── effects
+│   │   │   └── StepRewardEffect.tsx
+│   │   ├── icons
+│   │   │   ├── IconSymbol.ios.tsx
+│   │   │   └── IconSymbol.tsx
+│   │   ├── text
+│   │   │   ├── AvailablePointsText.tsx
+│   │   │   ├── StepCountText.tsx
+│   │   │   └── ThemedText.tsx
+│   │   ├── view
+│   │   │   └── ThemedView.tsx
+│   │   └── HapticTab.tsx
+├── constants
+│   └── Colors.ts
+├── context
+│   └── PointsContext.tsx
+├── dist
+├── features
+│   ├── benefits
+│   ├── giftshop
+│   ├── health
+│   └── home
+│       ├── daily-check
+│       │   └── DailyCheckView.tsx
+│       ├── earning-points
+│       │   ├── EarningPointsCardItem.tsx
+│       │   └── EarningPointsView.tsx
+│       ├── earning-shortcuts
+│       │   ├── EarningShortcutsCardItem.tsx
+│       │   └── EarningShortcutsView.tsx
+│       ├── health-shortcuts
+│       │   ├── HealthShortcutsCardItem.tsx
+│       │   └── HealthShortcutsView.tsx
+│       ├── step-counter
+│       │   └── StepCounterView.tsx
+│       └── step-reward
+│           ├── StepRewardListView.tsx
+│           ├── HomeHeaderView.tsx
+│           └── useHomeState.ts
+├── hooks
+│   ├── color
+│   │   ├── useColorScheme.ts
+│   │   ├── useColorScheme.web.ts
+│   │   └── useThemeColor.ts
+│   └── healthKit
+│       └── useFetchStepCount.ts
+...
+```
+
 ## Get started
 
 1. Install dependencies
