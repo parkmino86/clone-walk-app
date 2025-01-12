@@ -19,10 +19,10 @@ CLONE-WALK-APP
 │   │   │   └── index.tsx
 │   │   ├── health
 │   │   │   └── index.tsx
-│   │   └── news
-│   │       ├── index.tsx
-│   │       ├── _layout.tsx
-│   │       └── +not-found.tsx
+│   │   ├── news
+│   │   │   └── index.tsx
+│   │   ├── _layout.tsx
+│   │   └── +not-found.tsx
 ├── assets
 ├── components
 │   ├── __tests__
