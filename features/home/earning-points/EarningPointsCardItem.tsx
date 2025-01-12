@@ -15,7 +15,7 @@ export function EarningPointsCardItem({ title, icon, onPress }: EarningPointsCar
       <Text style={styles.cardTitle}>{title}</Text>
       <IconSymbol name={icon} color={Colors.common.primary} style={styles.icon} />
       <TouchableOpacity style={[styles.button, styles.buttonContent]} onPress={onPress}>
-        <IconSymbol name="p.circle.fill" color={Colors.common.yellow} style={styles.iconSmall} />
+        <IconSymbol name="p.circle.fill" color={Colors.common.yellow} style={styles.iconButtonSymbol} />
         <Text style={styles.buttonText}>받기</Text>
       </TouchableOpacity>
     </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     height: 28,
     width: 28,
   },
-  iconSmall: {
+  iconButtonSymbol: {
     height: 18,
     width: 18,
   },

@@ -12,13 +12,13 @@ type StepCounterViewProps = {
 
 export function StepCounterView({ steps, onPointIncrease }: StepCounterViewProps) {
   const [collectedPoints, setCollectedPoints] = React.useState(0);
-  const scaleAnim = useRef(new Animated.Value(1)).current;
+  const scaleEffect = useRef(new Animated.Value(1)).current;
 
   const totalPoints = Math.floor(steps / 50);
   const availablePoints = totalPoints - collectedPoints;
 
   const handlePressIn = () => {
-    Animated.timing(scaleAnim, {
+    Animated.timing(scaleEffect, {
       toValue: 0.9,
       duration: 100,
       useNativeDriver: true,
@@ -26,7 +26,7 @@ export function StepCounterView({ steps, onPointIncrease }: StepCounterViewProps
   };
 
   const handlePressOut = () => {
-    Animated.timing(scaleAnim, {
+    Animated.timing(scaleEffect, {
       toValue: 1,
       duration: 100,
       useNativeDriver: true,
@@ -48,7 +48,7 @@ export function StepCounterView({ steps, onPointIncrease }: StepCounterViewProps
           </View>
         )}
         <StepRewardButton
-          scaleAnim={scaleAnim}
+          scaleEffect={scaleEffect}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
         />

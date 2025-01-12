@@ -5,15 +5,15 @@ import { IconSymbol } from '@/components/ui/icons/IconSymbol';
 import { Colors } from '@/constants/Colors';
 
 type StepRewardButtonProps = {
-  scaleAnim: Animated.Value;
+  scaleEffect: Animated.Value;
   onPressIn: () => void;
   onPressOut: () => void;
 };
 
-export const StepRewardButton: FC<StepRewardButtonProps> = ({ scaleAnim, onPressIn, onPressOut }) => (
+export const StepRewardButton: FC<StepRewardButtonProps> = ({ scaleEffect, onPressIn, onPressOut }) => (
   <View style={styles.container}>
     <HapticTab onPressIn={onPressIn} onPressOut={onPressOut}>
-      <Animated.View style={[styles.icon, { transform: [{ scale: scaleAnim }] }]}>
+      <Animated.View style={[styles.icon, { transform: [{ scale: scaleEffect }] }]}>
         <IconSymbol name="p.circle.fill" size={120} color={Colors.common.yellow} />
       </Animated.View>
     </HapticTab>

@@ -86,8 +86,8 @@ const HomeView = () => {
       </LinearGradient>
 
       <View style={[styles.earningPointsSection, { paddingBottom: 100 + useSafeAreaInsets().bottom }]}>
-        <EarningPointsView />    
-        <EarningShortcutsView />    
+        <EarningPointsView />
+        <EarningShortcutsView /> 
         <HealthShortcutsView />
       </View>
     </ScrollView>

@@ -2,9 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
 import { Colors } from '@/constants/Colors';
 import { EarningPointsCardItem } from '@/features/home/earning-points/EarningPointsCardItem';
+import { IconSymbolName } from '@/components/ui/icons/IconSymbol';
 
 export function EarningPointsView() {
-  const cards = [
+  const cards: { id: number; title: string; icon: IconSymbolName }[] = [
     { id: 1, title: 'OX 건강퀴즈', icon: 'questionmark.circle' },
     { id: 2, title: '머니팜', icon: 'leaf' },
     { id: 3, title: '선착순 미션', icon: 'alarm' },

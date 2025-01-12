@@ -2,9 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Colors } from '@/constants/Colors';
 import { HealthShortcutsCardItem } from '@/features/home/health-shortcuts/HealthShortcutsCardItem';
+import { IconSymbolName } from '@/components/ui/icons/IconSymbol';
 
 export function HealthShortcutsView() {
-  const sections = [
+  const sections: { id: number; title: string; description: string; icon: IconSymbolName }[] = [
     {
       id: 1,
       title: '어제 얼마나 걸었지?',
